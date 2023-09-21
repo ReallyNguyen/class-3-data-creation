@@ -3,9 +3,10 @@
 ## Installations
 
 - Dependencies/packages command lines used:
+  - `npm install`
   - `npm install @rneui/themed @rneui/base`
 
-## [Put the Name of Your Library]
+## Elements
 
 - Components used from the library:
   - Avatar
