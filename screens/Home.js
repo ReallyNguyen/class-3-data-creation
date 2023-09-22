@@ -1,26 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import { Avatar, Button } from '@rneui/themed';
 
 export default function Home({ navigation }) {
+    const [number, setNumber] = useState(1);
+
+    const check = () => {
+
+        if (number == 1) {
+            console.log("ONE")
+
+        } else if (number == 2) {
+            console.log("TWO")
+
+        } else if (number == 3) {
+            navigation.push('About')
+        }
+
+        setNumber(number + 1);
+    }
+
     return (
         <View style={styles.container}>
-            <View style={styles.welcome}>
-                <Text style={{ fontSize: 20 }}>Welcome!</Text>
-                <Avatar
-                    size={42}
-                    rounded
-                    title="JN"
-                    containerStyle={{ backgroundColor: "purple", marginLeft: 15 }}
-                />
-            </View>
-
             <Button
-                title="Go to about page"
-                onPress={() => navigation.push('About')}
+                title="Click me"
+                onPress={() => check()}
                 type="outline"
                 buttonStyle={{ borderColor: 'red', borderWidth: 2 }}
                 titleStyle={{ color: 'red' }}
+                style={number === 1 ? styles.btnBlue : number === 2 ? styles.btnRed : styles.btnGreen}
+            />
+            <Avatar
+                size={42}
+                rounded
+                title="JN"
+                containerStyle={{ backgroundColor: "purple", marginLeft: 15 }}
             />
         </View>
     );
@@ -29,14 +44,34 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        display: 'flex',
+        flexDirection: 'row',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    welcome: {
-        display: 'flex',
-        flexDirection: 'row',
+    btnBlue: {
         alignItems: 'center',
-        marginBottom: 20
+        backgroundColor: "#63C5DA",
+        borderColor: '#63C5DA',
+        borderRadius: 10,
+        borderWidth: 1,
+        padding: 10
+    },
+    btnRed: {
+        alignItems: 'center',
+        backgroundColor: '#800000',
+        borderColor: '#800000',
+        borderRadius: 10,
+        borderWidth: 1,
+        padding: 10
+    },
+    btnGreen: {
+        alignItems: 'center',
+        backgroundColor: "#00563B",
+        borderColor: '#00563B',
+        borderRadius: 10,
+        borderWidth: 1,
+        padding: 10
     }
 });
