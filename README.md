@@ -3,6 +3,7 @@
 ## Installations
 
 - Dependencies/packages command lines used:
+  - `npm install`
   - `npm install @rneui/themed @rneui/base`
 
 ## Elements
